@@ -18,11 +18,23 @@ npm install github.com/AdBird-sk/cookie-consent-lib
 import { ConsentProvider, CookieBanner, CookieSettingsButton, LoadWhenConsented } from "cookie-consent-lib"
 
 function App() {
-  return (
-    <ConsentProvider language="sk">
-      <CookieBanner mode="banner" />
-      <CookieSettingsButton />
-      <LoadWhenConsented category="analytics" onLoad={() => { /* init GA */ }} />
-    </ConsentProvider>
-  )
+    return (
+        <CookieConsent
+            language="sk"
+            requireAction
+            onConsent={(consent) => {
+                if (consent.choices.analytics) {
+                    console.log("Analytics loaded 🚀")
+                }
+            }}
+            // settingsButtonClass={}
+            // storageKey={}
+            // showSettingsButton={}
+            // texts={}
+            // categories={}
+            // consentMaxAgeDays={}
+        >
+            {children}
+        </CookieConsent>
+    )
 }
