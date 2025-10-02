@@ -1,28 +1,16 @@
-import React, { useMemo } from "react";
-import { useConsentContext } from "@/context/ConsentContext";
-import CookieModal from "@/components/CookieModal";
-import cookieIcon from "@/assets/cookie.png";
 import classes from "@/styles/CookieBanner.module.css";
+import cookieIcon from "@/assets/cookie.png";
+import CookieModal from "@/components/CookieModal";
+import {useMemo} from "react";
+import {useConsentContext} from "@/context/ConsentContext";
 
-export default function CookieBanner({
-                                         mode = "banner",           // "banner" | "modal"
-                                         requireAction = false,     // if true, no close until a choice is saved
-                                         className,
-                                         style,
-                                         texts: textsOverride
-                                     }) {
-    const {
-        texts: baseTexts,
-        hasChoice,
-        isModalOpen,
-        setIsModalOpen,
-        setAll
-    } = useConsentContext();
 
-    const texts = { ...baseTexts, ...(textsOverride || {}) };
+export default function CookieBanner({mode = "banner", requireAction = false, className, style, texts: textsOverride}) {
+    const {texts: baseTexts, hasChoice, isModalOpen, setIsModalOpen, setAll} = useConsentContext()
 
-    // Visible when user hasn't chosen yet.
-    const visible = useMemo(() => !hasChoice, [hasChoice]);
+    const texts = {...baseTexts, ...(textsOverride || {})}
+
+    const visible = useMemo(() => !hasChoice, [hasChoice])
 
     function handleAcceptAll() {
         setAll(true)
@@ -36,7 +24,6 @@ export default function CookieBanner({
         setIsModalOpen(true)
     }
 
-    // Centered modal mode: show modal immediately if no choice
     if (mode === "modal" && visible) {
         return (
             <>
@@ -44,13 +31,13 @@ export default function CookieBanner({
                     isOpen
                     texts={texts}
                     requireAction={requireAction}
-                    onClose={() => {}}
+                    onClose={() => {
+                    }}
                 />
             </>
         )
     }
 
-    // Bottom banner mode
     return (
         <>
             {visible &&
@@ -62,7 +49,7 @@ export default function CookieBanner({
                 >
                     <div className={classes.content}>
                         <div className={classes.logoWrap}>
-                            <img src={cookieIcon} alt="Cookie" width="32" height="32" />
+                            <img src={cookieIcon} alt="Cookie" width="32" height="32"/>
                         </div>
 
                         <div className={classes.textWrap}>
@@ -89,7 +76,8 @@ export default function CookieBanner({
                 <CookieModal
                     isOpen
                     texts={texts}
-                    onClose={() => {}}
+                    onClose={() => {
+                    }}
                     requireAction={requireAction}
                 />
             }
