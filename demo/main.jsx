@@ -1,5 +1,5 @@
 import React from "react";
-import CookieConsent from "../src";
+import CookieConsent from "@";
 import {createRoot} from "react-dom/client";
 
 

@@ -12,7 +12,7 @@ export default defineConfig({
     },
     build: {
         lib: {
-            entry: "src/index.jsx",
+            entry: "src/index.js",
             name: "CookieConsentLib",
             fileName: (format) => `cookie-consent-lib.${format}.js`,
             formats: ["es", "umd"]
