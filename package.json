@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "rm -rf node_modules dist && npm install && vite build",
     "lint": "eslint . --ext .js,.jsx"
   },
   "keywords": [
