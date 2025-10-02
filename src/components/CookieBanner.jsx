@@ -59,7 +59,7 @@ export default function CookieBanner({requireAction = false, className, style, t
 
             {isModalOpen &&
                 <CookieModal
-                    isOpen
+                    isOpen={isModalOpen}
                     texts={texts}
                     onClose={() => {
                     }}

@@ -29,7 +29,11 @@ export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}
     function getInitial() {
         const stored = readLS(storageKey)
         if (stored && stored.choices && stored.expiresAt && stored.expiresAt > Date.now()) {
-            return {consent: stored.choices, hasChoice: true, isExpired: false}
+            return {
+                consent: stored.choices,
+                hasChoice: true,
+                isExpired: false
+            }
         }
         const defaults = {}
         categories.forEach(c => {
@@ -80,8 +84,12 @@ export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}
     }
 
     function save() {
+        const expiresAt = Date.now() + consentMaxAgeDays * msPerDay
+        const payload = {choices: consent, timestamp: Date.now(), version: 1, expiresAt}
+        writeLS(storageKey, payload)
         setHasChoice(true)
         setIsExpired(false)
+        if (onChange) onChange(payload)
     }
 
     function reset() {

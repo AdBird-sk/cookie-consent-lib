@@ -1,6 +1,6 @@
 import YA, { useState as a, useEffect as gA, createContext as HA, useMemo as QA, useContext as hA, useRef as zA } from "react";
 import { createPortal as OA } from "react-dom";
-var b = { exports: {} }, m = {};
+var r = { exports: {} }, m = {};
 /**
  * @license React
  * react-jsx-runtime.production.js
@@ -10,24 +10,24 @@ var b = { exports: {} }, m = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var _;
+var $;
 function cA() {
-  if (_) return m;
-  _ = 1;
+  if ($) return m;
+  $ = 1;
   var B = Symbol.for("react.transitional.element"), D = Symbol.for("react.fragment");
-  function M(Y, I, w) {
-    var h = null;
-    if (w !== void 0 && (h = "" + w), I.key !== void 0 && (h = "" + I.key), "key" in I) {
-      w = {};
+  function M(Y, I, E) {
+    var H = null;
+    if (E !== void 0 && (H = "" + E), I.key !== void 0 && (H = "" + I.key), "key" in I) {
+      E = {};
       for (var O in I)
-        O !== "key" && (w[O] = I[O]);
-    } else w = I;
-    return I = w.ref, {
+        O !== "key" && (E[O] = I[O]);
+    } else E = I;
+    return I = E.ref, {
       $$typeof: B,
       type: Y,
-      key: h,
+      key: H,
       ref: I !== void 0 ? I : null,
-      props: w
+      props: E
     };
   }
   return m.Fragment = D, m.jsx = M, m.jsxs = M, m;
@@ -42,9 +42,9 @@ var N = {};
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
  */
-var $;
+var AA;
 function jA() {
-  return $ || ($ = 1, process.env.NODE_ENV !== "production" && function() {
+  return AA || (AA = 1, process.env.NODE_ENV !== "production" && function() {
     function B(A) {
       if (A == null) return null;
       if (typeof A == "function")
@@ -53,7 +53,7 @@ function jA() {
       switch (A) {
         case z:
           return "Fragment";
-        case C:
+        case w:
           return "Profiler";
         case F:
           return "StrictMode";
@@ -72,14 +72,14 @@ function jA() {
             return "Portal";
           case i:
             return (A.displayName || "Context") + ".Provider";
-          case E:
+          case C:
             return (A._context.displayName || "Context") + ".Consumer";
           case S:
             var g = A.render;
             return A = A.displayName, A || (A = g.displayName || g.name || "", A = A !== "" ? "ForwardRef(" + A + ")" : "ForwardRef"), A;
           case wA:
             return g = A.displayName || null, g !== null ? g : B(A.type) || "Memo";
-          case y:
+          case W:
             g = A._payload, A = A._init;
             try {
               return B(A(g));
@@ -110,7 +110,7 @@ function jA() {
     }
     function Y(A) {
       if (A === z) return "<>";
-      if (typeof A == "object" && A !== null && A.$$typeof === y)
+      if (typeof A == "object" && A !== null && A.$$typeof === W)
         return "<...>";
       try {
         var g = B(A);
@@ -123,11 +123,11 @@ function jA() {
       var A = d.A;
       return A === null ? null : A.getOwner();
     }
-    function w() {
+    function E() {
       return Error("react-stack-top-frame");
     }
-    function h(A) {
-      if (W.call(A, "key")) {
+    function H(A) {
+      if (l.call(A, "key")) {
         var g = Object.getOwnPropertyDescriptor(A, "key").get;
         if (g && g.isReactWarning) return !1;
       }
@@ -135,7 +135,7 @@ function jA() {
     }
     function O(A, g) {
       function G() {
-        l || (l = !0, console.error(
+        L || (L = !0, console.error(
           "%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://react.dev/link/special-props)",
           g
         ));
@@ -147,11 +147,11 @@ function jA() {
     }
     function c() {
       var A = B(this.type);
-      return L[A] || (L[A] = !0, console.error(
+      return q[A] || (q[A] = !0, console.error(
         "Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release."
       )), A = this.props.ref, A !== void 0 ? A : null;
     }
-    function H(A, g, G, j, K, J, s, Z) {
+    function h(A, g, G, j, K, J, s, Z) {
       return G = J.ref, A = {
         $$typeof: e,
         type: A,
@@ -196,12 +196,12 @@ function jA() {
               "React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead."
             );
         else P(o);
-      if (W.call(g, "key")) {
+      if (l.call(g, "key")) {
         o = B(A);
         var t = Object.keys(g).filter(function(GA) {
           return GA !== "key";
         });
-        j = 0 < t.length ? "{key: someKey, " + t.join(": ..., ") + ": ...}" : "{key: someKey}", V[o + j] || (t = 0 < t.length ? "{" + t.join(": ..., ") + ": ...}" : "{}", console.error(
+        j = 0 < t.length ? "{key: someKey, " + t.join(": ..., ") + ": ...}" : "{key: someKey}", _[o + j] || (t = 0 < t.length ? "{" + t.join(": ..., ") + ": ...}" : "{}", console.error(
           `A props object containing a "key" prop is being spread into JSX:
   let props = %s;
   <%s {...props} />
@@ -212,9 +212,9 @@ React keys must be passed directly to JSX without using spread:
           o,
           t,
           o
-        ), V[o + j] = !0);
+        ), _[o + j] = !0);
       }
-      if (o = null, G !== void 0 && (M(G), o = "" + G), h(g) && (M(g.key), o = "" + g.key), "key" in g) {
+      if (o = null, G !== void 0 && (M(G), o = "" + G), H(g) && (M(g.key), o = "" + g.key), "key" in g) {
         G = {};
         for (var p in g)
           p !== "key" && (G[p] = g[p]);
@@ -222,7 +222,7 @@ React keys must be passed directly to JSX without using spread:
       return o && O(
         G,
         typeof A == "function" ? A.displayName || A.name || "Unknown" : A
-      ), H(
+      ), h(
         A,
         o,
         J,
@@ -236,7 +236,7 @@ React keys must be passed directly to JSX without using spread:
     function P(A) {
       typeof A == "object" && A !== null && A.$$typeof === e && A._store && (A._store.validated = 1);
     }
-    var R = YA, e = Symbol.for("react.transitional.element"), U = Symbol.for("react.portal"), z = Symbol.for("react.fragment"), F = Symbol.for("react.strict_mode"), C = Symbol.for("react.profiler"), E = Symbol.for("react.consumer"), i = Symbol.for("react.context"), S = Symbol.for("react.forward_ref"), f = Symbol.for("react.suspense"), u = Symbol.for("react.suspense_list"), wA = Symbol.for("react.memo"), y = Symbol.for("react.lazy"), CA = Symbol.for("react.activity"), EA = Symbol.for("react.client.reference"), d = R.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, W = Object.prototype.hasOwnProperty, IA = Array.isArray, T = console.createTask ? console.createTask : function() {
+    var R = YA, e = Symbol.for("react.transitional.element"), U = Symbol.for("react.portal"), z = Symbol.for("react.fragment"), F = Symbol.for("react.strict_mode"), w = Symbol.for("react.profiler"), C = Symbol.for("react.consumer"), i = Symbol.for("react.context"), S = Symbol.for("react.forward_ref"), f = Symbol.for("react.suspense"), u = Symbol.for("react.suspense_list"), wA = Symbol.for("react.memo"), W = Symbol.for("react.lazy"), CA = Symbol.for("react.activity"), EA = Symbol.for("react.client.reference"), d = R.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, l = Object.prototype.hasOwnProperty, IA = Array.isArray, T = console.createTask ? console.createTask : function() {
       return null;
     };
     R = {
@@ -244,10 +244,10 @@ React keys must be passed directly to JSX without using spread:
         return A();
       }
     };
-    var l, L = {}, q = R["react-stack-bottom-frame"].bind(
+    var L, q = {}, X = R["react-stack-bottom-frame"].bind(
       R,
-      w
-    )(), X = T(Y(w)), V = {};
+      E
+    )(), V = T(Y(E)), _ = {};
     N.Fragment = z, N.jsx = function(A, g, G, j, K) {
       var J = 1e4 > d.recentlyCreatedOwnerStacks++;
       return k(
@@ -257,8 +257,8 @@ React keys must be passed directly to JSX without using spread:
         !1,
         j,
         K,
-        J ? Error("react-stack-top-frame") : q,
-        J ? T(Y(A)) : X
+        J ? Error("react-stack-top-frame") : X,
+        J ? T(Y(A)) : V
       );
     }, N.jsxs = function(A, g, G, j, K) {
       var J = 1e4 > d.recentlyCreatedOwnerStacks++;
@@ -269,15 +269,15 @@ React keys must be passed directly to JSX without using spread:
         !0,
         j,
         K,
-        J ? Error("react-stack-top-frame") : q,
-        J ? T(Y(A)) : X
+        J ? Error("react-stack-top-frame") : X,
+        J ? T(Y(A)) : V
       );
     };
   }()), N;
 }
-process.env.NODE_ENV === "production" ? b.exports = cA() : b.exports = jA();
-var Q = b.exports;
-const oA = "_wrapper_1k5gy_1", iA = "_show_1k5gy_17", eA = "_content_1k5gy_22", PA = "_logoWrap_1k5gy_35", RA = "_textWrap_1k5gy_41", kA = "_title_1k5gy_47", xA = "_description_1k5gy_52", JA = "_actions_1k5gy_57", nA = "_accept_1k5gy_62", FA = "_reject_1k5gy_63", KA = "_customize_1k5gy_64", x = {
+process.env.NODE_ENV === "production" ? r.exports = cA() : r.exports = jA();
+var Q = r.exports;
+const oA = "_wrapper_y0cjv_1", iA = "_show_y0cjv_18", eA = "_content_y0cjv_23", PA = "_logoWrap_y0cjv_37", RA = "_textWrap_y0cjv_43", kA = "_title_y0cjv_49", xA = "_description_y0cjv_54", JA = "_actions_y0cjv_59", nA = "_accept_y0cjv_64", FA = "_reject_y0cjv_65", KA = "_customize_y0cjv_66", x = {
   wrapper: oA,
   show: iA,
   content: eA,
@@ -308,8 +308,8 @@ const oA = "_wrapper_1k5gy_1", iA = "_show_1k5gy_17", eA = "_content_1k5gy_22", 
   switch: "_switch_52ohu_25",
   slider: bA
 };
-function rA({ checked: B, disabled: D, onChange: M, label: Y, description: I, id: w }) {
-  function h(O) {
+function rA({ checked: B, disabled: D, onChange: M, label: Y, description: I, id: E }) {
+  function H(O) {
     D || M && M(O.target.checked);
   }
   return /* @__PURE__ */ Q.jsxs("div", { className: v.toggleRow, "aria-disabled": D, children: [
@@ -321,13 +321,13 @@ function rA({ checked: B, disabled: D, onChange: M, label: Y, description: I, id
       /* @__PURE__ */ Q.jsx(
         "input",
         {
-          id: w,
+          id: E,
           type: "checkbox",
           checked: !!B,
           disabled: D,
-          onChange: h,
+          onChange: H,
           "aria-checked": !!B,
-          "aria-labelledby": w + "-label"
+          "aria-labelledby": E + "-label"
         }
       ),
       /* @__PURE__ */ Q.jsx("span", { className: v.slider })
@@ -343,7 +343,7 @@ function yA(B) {
     return null;
   }
 }
-function AA(B, D) {
+function b(B, D) {
   if (!(typeof window > "u"))
     try {
       D === null ? window.localStorage.removeItem(B) : window.localStorage.setItem(B, JSON.stringify(D));
@@ -351,50 +351,55 @@ function AA(B, D) {
     }
 }
 function WA({ storageKey: B, categories: D, onChange: M, consentMaxAgeDays: Y }) {
-  function w() {
-    const C = yA(B);
-    if (C && C.choices && C.expiresAt && C.expiresAt > Date.now())
-      return { consent: C.choices, hasChoice: !0, isExpired: !1 };
-    const E = {};
+  function E() {
+    const w = yA(B);
+    if (w && w.choices && w.expiresAt && w.expiresAt > Date.now())
+      return {
+        consent: w.choices,
+        hasChoice: !0,
+        isExpired: !1
+      };
+    const C = {};
     return D.forEach((i) => {
-      E[i.id] = !!i.defaultEnabled || !!i.required;
-    }), { consent: E, hasChoice: !1, isExpired: !1 };
+      C[i.id] = !!i.defaultEnabled || !!i.required;
+    }), { consent: C, hasChoice: !1, isExpired: !1 };
   }
-  const [h, O] = a(() => w().consent), [c, H] = a(() => w().hasChoice), [k, P] = a(() => w().isExpired);
+  const [H, O] = a(() => E().consent), [c, h] = a(() => E().hasChoice), [k, P] = a(() => E().isExpired);
   gA(() => {
     if (!c) return;
-    const C = Date.now() + Y * 864e5, E = { choices: h, timestamp: Date.now(), version: 1, expiresAt: C };
-    AA(B, E), M && M(E);
-  }, [h, c, Y, B, M]);
-  function R(C) {
-    const E = {};
+    const w = Date.now() + Y * 864e5, C = { choices: H, timestamp: Date.now(), version: 1, expiresAt: w };
+    b(B, C), M && M(C);
+  }, [H, c, Y, B, M]);
+  function R(w) {
+    const C = {};
     D.forEach((i) => {
-      E[i.id] = i.required ? !0 : !!C;
-    }), O(E), H(!0), P(!1);
+      C[i.id] = i.required ? !0 : !!w;
+    }), O(C), h(!0), P(!1);
   }
-  function e(C) {
-    O((E) => {
-      const i = { ...E };
-      return Object.keys(C).forEach((S) => {
+  function e(w) {
+    O((C) => {
+      const i = { ...C };
+      return Object.keys(w).forEach((S) => {
         const f = D.find((u) => u.id === S);
-        f && (i[S] = f.required ? !0 : !!C[S]);
+        f && (i[S] = f.required ? !0 : !!w[S]);
       }), i;
     });
   }
-  function U(C) {
-    const E = D.find((i) => i.id === C);
-    return E ? E.required ? !0 : !!h[C] : !1;
+  function U(w) {
+    const C = D.find((i) => i.id === w);
+    return C ? C.required ? !0 : !!H[w] : !1;
   }
   function z() {
-    H(!0), P(!1);
+    const w = Date.now() + Y * 864e5, C = { choices: H, timestamp: Date.now(), version: 1, expiresAt: w };
+    b(B, C), h(!0), P(!1), M && M(C);
   }
   function F() {
-    const C = {};
-    D.forEach((E) => {
-      C[E.id] = !!E.defaultEnabled || !!E.required;
-    }), O(C), H(!1), P(!1), AA(B, null);
+    const w = {};
+    D.forEach((C) => {
+      w[C.id] = !!C.defaultEnabled || !!C.required;
+    }), O(w), h(!1), P(!1), b(B, null);
   }
-  return { consent: h, setAll: R, setMany: e, isAllowed: U, save: z, reset: F, hasChoice: c, isExpired: k, setHasChoice: H };
+  return { consent: H, setAll: R, setMany: e, isAllowed: U, save: z, reset: F, hasChoice: c, isExpired: k, setHasChoice: h };
 }
 const lA = "We use cookies", LA = "We use cookies to enhance your experience. You can accept all, reject non-essential, or customize your choices.", qA = "Allow all", XA = "Only necessary", VA = "Customize", _A = "Save choices", $A = "Necessary", AB = "Required for the website to function. You cannot disable these.", BB = "Analytics", gB = "Helps us understand how our site is used.", QB = "Marketing", DB = "Used to deliver personalized ads and campaigns.", MB = "Functional", wB = "Enhances functionality like chat widgets.", CB = "Cookie settings", EB = {
   title: lA,
@@ -481,10 +486,10 @@ function pB(B) {
   ];
 }
 const MA = HA(null);
-function bB({ children: B, language: D = "en", categories: M, storageKey: Y = "cookie-consent-v1", consentMaxAgeDays: I = 365, texts: w, onChange: h }) {
-  const c = { ...ZB(D), ...w || {} }, H = QA(() => M && M.length ? M : pB(c), [M, c]), { consent: k, setAll: P, setMany: R, isAllowed: e, save: U, reset: z, hasChoice: F, isExpired: C, setHasChoice: E } = WA({ storageKey: Y, categories: H, onChange: h, consentMaxAgeDays: I }), [i, S] = a(!1), f = {
+function bB({ children: B, language: D = "en", categories: M, storageKey: Y = "cookie-consent-v1", consentMaxAgeDays: I = 365, texts: E, onChange: H }) {
+  const c = { ...ZB(D), ...E || {} }, h = QA(() => M && M.length ? M : pB(c), [M, c]), { consent: k, setAll: P, setMany: R, isAllowed: e, save: U, reset: z, hasChoice: F, isExpired: w, setHasChoice: C } = WA({ storageKey: Y, categories: h, onChange: H, consentMaxAgeDays: I }), [i, S] = a(!1), f = {
     texts: c,
-    categories: H,
+    categories: h,
     consent: k,
     setAll: P,
     setMany: R,
@@ -492,31 +497,31 @@ function bB({ children: B, language: D = "en", categories: M, storageKey: Y = "c
     save: U,
     reset: z,
     hasChoice: F,
-    isExpired: C,
-    setHasChoice: E,
+    isExpired: w,
+    setHasChoice: C,
     isModalOpen: i,
     setIsModalOpen: S
   };
   return /* @__PURE__ */ Q.jsx(MA.Provider, { value: f, children: B });
 }
-function r() {
+function y() {
   const B = hA(MA);
   if (!B)
     throw new Error("useConsentContext must be used within <ConsentProvider>");
   return B;
 }
 function rB({ isOpen: B, texts: D, onClose: M, requireAction: Y = !1 }) {
-  const { categories: I, consent: w, setMany: h, save: O, setIsModalOpen: c } = r(), [H, k] = a(!1), P = zA(null);
+  const { categories: I, consent: E, setMany: H, save: O, setIsModalOpen: c } = y(), [h, k] = a(!1), P = zA(null);
   if (gA(function() {
     if (!B) return;
     k(!0);
     const F = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    function C(E) {
-      E.key === "Escape" && !Y && e();
+    function w(C) {
+      C.key === "Escape" && !Y && e();
     }
-    return window.addEventListener("keydown", C), function() {
-      window.removeEventListener("keydown", C), document.body.style.overflow = F, k(!1);
+    return window.addEventListener("keydown", w), function() {
+      window.removeEventListener("keydown", w), document.body.style.overflow = F, k(!1);
     };
   }, [B, Y]), !B) return null;
   function R(z) {
@@ -529,7 +534,7 @@ function rB({ isOpen: B, texts: D, onClose: M, requireAction: Y = !1 }) {
     O(), e();
   }
   return OA(
-    /* @__PURE__ */ Q.jsx("div", { className: `${n.backdrop} ${H ? n.show : ""}`, role: "dialog", "aria-modal": "true", onMouseDown: R, children: /* @__PURE__ */ Q.jsxs("div", { ref: P, className: `${n.modal} ${H ? n.enter : ""}`, children: [
+    /* @__PURE__ */ Q.jsx("div", { className: `${n.backdrop} ${h ? n.show : ""}`, role: "dialog", "aria-modal": "true", onMouseDown: R, children: /* @__PURE__ */ Q.jsxs("div", { ref: P, className: `${n.modal} ${h ? n.enter : ""}`, children: [
       /* @__PURE__ */ Q.jsxs("div", { className: n.header, children: [
         /* @__PURE__ */ Q.jsx("div", { className: n.title, children: D.title }),
         !Y && /* @__PURE__ */ Q.jsx("button", { className: n.close, "aria-label": "Close", onClick: e, children: "×" })
@@ -540,9 +545,9 @@ function rB({ isOpen: B, texts: D, onClose: M, requireAction: Y = !1 }) {
           id: `cc-${z.id}`,
           label: z.label,
           description: z.description,
-          checked: !!w[z.id],
+          checked: !!E[z.id],
           disabled: !!z.required,
-          onChange: (F) => h({ [z.id]: F })
+          onChange: (F) => H({ [z.id]: F })
         },
         z.id
       )) }),
@@ -552,7 +557,7 @@ function rB({ isOpen: B, texts: D, onClose: M, requireAction: Y = !1 }) {
   );
 }
 function yB({ requireAction: B = !1, className: D, style: M, texts: Y }) {
-  const { texts: I, hasChoice: w, isModalOpen: h, setIsModalOpen: O, setAll: c } = r(), H = { ...I, ...Y || {} }, k = QA(() => !w, [w]);
+  const { texts: I, hasChoice: E, isModalOpen: H, setIsModalOpen: O, setAll: c } = y(), h = { ...I, ...Y || {} }, k = QA(() => !E, [E]);
   function P() {
     c(!0);
   }
@@ -573,22 +578,22 @@ function yB({ requireAction: B = !1, className: D, style: M, texts: Y }) {
         children: /* @__PURE__ */ Q.jsxs("div", { className: x.content, children: [
           /* @__PURE__ */ Q.jsx("div", { className: x.logoWrap, children: /* @__PURE__ */ Q.jsx("img", { src: DA, alt: "Cookie", width: "32", height: "32" }) }),
           /* @__PURE__ */ Q.jsxs("div", { className: x.textWrap, children: [
-            /* @__PURE__ */ Q.jsx("div", { className: x.title, children: H.title }),
-            /* @__PURE__ */ Q.jsx("div", { className: x.description, children: H.description })
+            /* @__PURE__ */ Q.jsx("div", { className: x.title, children: h.title }),
+            /* @__PURE__ */ Q.jsx("div", { className: x.description, children: h.description })
           ] }),
           /* @__PURE__ */ Q.jsxs("div", { className: x.actions, children: [
-            /* @__PURE__ */ Q.jsx("button", { className: x.reject, onClick: R, children: H.rejectAll }),
-            /* @__PURE__ */ Q.jsx("button", { className: x.customize, onClick: e, children: H.customize }),
-            /* @__PURE__ */ Q.jsx("button", { className: x.accept, onClick: P, children: H.acceptAll })
+            /* @__PURE__ */ Q.jsx("button", { className: x.reject, onClick: R, children: h.rejectAll }),
+            /* @__PURE__ */ Q.jsx("button", { className: x.customize, onClick: e, children: h.customize }),
+            /* @__PURE__ */ Q.jsx("button", { className: x.accept, onClick: P, children: h.acceptAll })
           ] })
         ] })
       }
     ),
-    h && /* @__PURE__ */ Q.jsx(
+    H && /* @__PURE__ */ Q.jsx(
       rB,
       {
-        isOpen: !0,
-        texts: H,
+        isOpen: H,
+        texts: h,
         onClose: () => {
         },
         requireAction: B
@@ -601,7 +606,7 @@ const WB = "_button_thxex_1", lB = "_icon_thxex_20", BA = {
   icon: lB
 };
 function LB({ className: B }) {
-  const { setIsModalOpen: D } = r();
+  const { setIsModalOpen: D } = y();
   function M() {
     D(!0);
   }
@@ -615,7 +620,7 @@ function LB({ className: B }) {
     }
   );
 }
-function VB({ children: B, language: D = "sk", categories: M, texts: Y, storageKey: I, consentMaxAgeDays: w, requireAction: h = !1, showSettingsButton: O = !1, settingsButtonClass: c, onConsent: H }) {
+function VB({ children: B, language: D = "sk", categories: M, texts: Y, storageKey: I, consentMaxAgeDays: E, requireAction: H = !1, showSettingsButton: O = !1, settingsButtonClass: c, onConsent: h }) {
   return /* @__PURE__ */ Q.jsxs(
     bB,
     {
@@ -623,10 +628,10 @@ function VB({ children: B, language: D = "sk", categories: M, texts: Y, storageK
       categories: M,
       texts: Y,
       storageKey: I,
-      consentMaxAgeDays: w,
-      onChange: H,
+      consentMaxAgeDays: E,
+      onChange: h,
       children: [
-        /* @__PURE__ */ Q.jsx(yB, { requireAction: h }),
+        /* @__PURE__ */ Q.jsx(yB, { requireAction: H }),
         B,
         O && /* @__PURE__ */ Q.jsx(LB, { className: c })
       ]
@@ -637,5 +642,5 @@ export {
   bB as ConsentProvider,
   LB as CookieSettingsButton,
   VB as default,
-  r as useConsentContext
+  y as useConsentContext
 };
