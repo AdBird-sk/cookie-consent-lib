@@ -1,0 +1,17 @@
+{
+  "title": "Používame cookies",
+  "description": "Cookies používame na zlepšenie vášho zážitku. Môžete povoliť všetky, zamietnuť nepovinné alebo si nastavenia prispôsobiť.",
+  "acceptAll": "Povoliť všetky",
+  "rejectAll": "Len nevyhnutné",
+  "customize": "Prispôsobiť",
+  "save": "Uložiť nastavenia",
+  "necessary": "Nevyhnutné",
+  "necessaryDesc": "Potrebné pre fungovanie webu. Nie je možné vypnúť.",
+  "analytics": "Analytické",
+  "analyticsDesc": "Pomáhajú nám pochopiť používanie webu.",
+  "marketing": "Marketingové",
+  "marketingDesc": "Používané na personalizovanú reklamu a kampane.",
+  "functional": "Funkčné",
+  "functionalDesc": "Rozširujú funkcie, napr. chat widgety.",
+  "settings": "Nastavenia cookies"
+}

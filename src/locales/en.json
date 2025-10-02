@@ -1,0 +1,17 @@
+{
+  "title": "We use cookies",
+  "description": "We use cookies to enhance your experience. You can accept all, reject non-essential, or customize your choices.",
+  "acceptAll": "Allow all",
+  "rejectAll": "Only necessary",
+  "customize": "Customize",
+  "save": "Save choices",
+  "necessary": "Necessary",
+  "necessaryDesc": "Required for the website to function. You cannot disable these.",
+  "analytics": "Analytics",
+  "analyticsDesc": "Helps us understand how our site is used.",
+  "marketing": "Marketing",
+  "marketingDesc": "Used to deliver personalized ads and campaigns.",
+  "functional": "Functional",
+  "functionalDesc": "Enhances functionality like chat widgets.",
+  "settings": "Cookie settings"
+}

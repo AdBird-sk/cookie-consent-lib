@@ -1,0 +1,42 @@
+{
+  "name": "cookie-consent-lib",
+  "version": "1.0.0",
+  "description": "Reusable EU-compliant cookie consent banner",
+  "type": "module",
+  "main": "dist/cookie-consent-lib.umd.js",
+  "module": "dist/cookie-consent-lib.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/cookie-consent-lib.es.js",
+      "require": "./dist/cookie-consent-lib.umd.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext .js,.jsx"
+  },
+  "keywords": [
+    "cookie",
+    "consent",
+    "gdpr",
+    "banner",
+    "react",
+    "eu"
+  ],
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.1",
+    "eslint": "^9.9.0",
+    "vite": "^5.4.0"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ]
+}

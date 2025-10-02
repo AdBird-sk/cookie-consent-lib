@@ -1,0 +1,17 @@
+{
+  "title": "Používáme cookies",
+  "description": "Cookies používáme pro vylepšení vašeho zážitku. Můžete povolit vše, odmítnout nepovinné nebo nastavení přizpůsobit.",
+  "acceptAll": "Povolit vše",
+  "rejectAll": "Jen nezbytné",
+  "customize": "Přizpůsobit",
+  "save": "Uložit nastavení",
+  "necessary": "Nezbytné",
+  "necessaryDesc": "Nutné pro fungování webu. Nelze vypnout.",
+  "analytics": "Analytické",
+  "analyticsDesc": "Pomáhají nám pochopit používání webu.",
+  "marketing": "Marketingové",
+  "marketingDesc": "Pro personalizovanou reklamu a kampaně.",
+  "functional": "Funkční",
+  "functionalDesc": "Rozšiřují funkce, např. chat widgety.",
+  "settings": "Nastavení cookies"
+}
