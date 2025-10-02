@@ -6,7 +6,8 @@
   "main": "./dist/cookie-consent-lib.es.js",
   "module": "./dist/cookie-consent-lib.es.js",
   "exports": {
-    ".": "./dist/cookie-consent-lib.es.js"
+    ".": "./dist/cookie-consent-lib.es.js",
+    "./style.css": "./dist/style.css"
   },
   "files": [
     "dist"
