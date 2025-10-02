@@ -5,11 +5,10 @@ import {useMemo} from "react";
 import {useConsentContext} from "@/context/ConsentContext";
 
 
-export default function CookieBanner({mode = "banner", requireAction = false, className, style, texts: textsOverride}) {
+export default function CookieBanner({requireAction = false, className, style, texts: textsOverride}) {
     const {texts: baseTexts, hasChoice, isModalOpen, setIsModalOpen, setAll} = useConsentContext()
 
     const texts = {...baseTexts, ...(textsOverride || {})}
-
     const visible = useMemo(() => !hasChoice, [hasChoice])
 
     function handleAcceptAll() {
@@ -22,20 +21,6 @@ export default function CookieBanner({mode = "banner", requireAction = false, cl
 
     function openCustomize() {
         setIsModalOpen(true)
-    }
-
-    if (mode === "modal" && visible) {
-        return (
-            <>
-                <CookieModal
-                    isOpen
-                    texts={texts}
-                    requireAction={requireAction}
-                    onClose={() => {
-                    }}
-                />
-            </>
-        )
     }
 
     return (

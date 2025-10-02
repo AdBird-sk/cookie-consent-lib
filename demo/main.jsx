@@ -1,24 +1,29 @@
-import React from "react"
-import {createRoot} from "react-dom/client"
-import {ConsentProvider, CookieBanner, CookieSettingsButton, LoadWhenConsented} from "@"
+import React from "react";
+import CookieConsent from "../src";
+import {createRoot} from "react-dom/client";
 
 
 function App() {
     return (
-        <ConsentProvider language="sk">
-            <CookieBanner/>
-
-            <footer>
-                <CookieSettingsButton/>
-            </footer>
-
-            <LoadWhenConsented
-                category="analytics"
-                onLoad={() => {
+        <CookieConsent
+            language="sk"
+            requireAction
+            onConsent={(consent) => {
+                if (consent.choices.analytics) {
                     console.log("Analytics loaded 🚀")
-                }}
-            />
-        </ConsentProvider>
+                }
+            }}
+            // settingsButtonClass={}
+            // storageKey={}
+            // showSettingsButton={}
+            // texts={}
+            // categories={}
+            // consentMaxAgeDays={}
+        >
+            <main>
+                <h1>Hello Cookie Consent Demo</h1>
+            </main>
+        </CookieConsent>
     )
 }
 
