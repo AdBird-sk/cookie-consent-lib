@@ -42,6 +42,15 @@ export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}
     const [isExpired, setIsExpired] = useState(initial.isExpired)
 
     useEffect(() => {
+        const stored = readLS(storageKey)
+        if (stored && stored.choices && stored.expiresAt && stored.expiresAt > Date.now()) {
+            setConsent(stored.choices)
+            setHasChoice(true)
+            setIsExpired(false)
+        }
+    }, [storageKey])
+
+    useEffect(() => {
         if (!hasChoice) return
         const expiresAt = Date.now() + consentMaxAgeDays * msPerDay
         const payload = {choices: consent, timestamp: Date.now(), version: 1, expiresAt}
