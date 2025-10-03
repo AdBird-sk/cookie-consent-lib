@@ -2,7 +2,7 @@
 
 import {useConsent} from "@/hooks/useConsent";
 import {getDefaultTexts, getDefaultCategories} from "@/utils/defaults";
-import {createContext, useContext, useMemo, useState} from "react";
+import {createContext, useContext, useMemo, useState, useEffect} from "react";
 
 
 const ConsentContext = createContext(null)
@@ -18,6 +18,21 @@ export function ConsentProvider({children, language = "sk", categories, storageK
     const {consent, setAll, setMany, isAllowed, save, reset, hasChoice, isExpired, setHasChoice} = useConsent({storageKey, categories: defaultCategories, onChange, consentMaxAgeDays})
 
     const [isModalOpen, setIsModalOpen] = useState(false)
+
+    useEffect(() => {
+        if (typeof window === "undefined") return
+        const raw = localStorage.getItem(storageKey)
+        if (raw) {
+            try {
+                const parsed = JSON.parse(raw)
+                if (parsed?.choices && parsed?.expiresAt > Date.now()) {
+                    setHasChoice(true)
+                }
+            } catch (e) {
+                console.warn("CookieConsent: failed to parse LS", e)
+            }
+        }
+    }, [storageKey, setHasChoice])
 
     const value = {
         texts,
