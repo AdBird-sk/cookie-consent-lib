@@ -488,15 +488,15 @@ function rB({ children: B, language: D = "sk", categories: C, storageKey: I = "c
   T(() => {
     if (typeof window > "u") return;
     const t = localStorage.getItem(I);
-    if (console.debug("ConsentProvider hydration check → raw LS:", t), t)
+    if (console.log("[CookieConsent] hydration check → raw LS:", t), t)
       try {
         const J = JSON.parse(t);
-        console.debug("Parsed LS:", J), J != null && J.choices && (J == null ? void 0 : J.expiresAt) > Date.now() ? (console.debug("Valid consent found → setting hasChoice true"), E(!0)) : console.debug("Consent expired or invalid → keeping hasChoice false");
+        console.log("[CookieConsent] Parsed LS:", J), J != null && J.choices && (J == null ? void 0 : J.expiresAt) > Date.now() ? (console.log("[CookieConsent] Valid consent found → setting hasChoice true"), E(!0)) : console.log("[CookieConsent] Consent expired or invalid → keeping hasChoice false");
       } catch (J) {
-        console.warn("CookieConsent: failed to parse LS", J);
+        console.warn("[CookieConsent] Failed to parse LS", J);
       }
   }, [I, E]), T(() => {
-    console.debug("ConsentProvider state → hasChoice:", x, "consent:", e);
+    typeof window > "u" || console.log("[CookieConsent] Current state → hasChoice:", x, "consent:", e);
   }, [x, e]);
   const v = {
     texts: c,
