@@ -1,3 +1,5 @@
+"use client"
+
 import {useConsent} from "@/hooks/useConsent";
 import {getDefaultTexts, getDefaultCategories} from "@/utils/defaults";
 import {createContext, useContext, useMemo, useState} from "react";
@@ -5,7 +7,7 @@ import {createContext, useContext, useMemo, useState} from "react";
 
 const ConsentContext = createContext(null)
 
-export function ConsentProvider({children, language = "en", categories, storageKey = "cookie-consent-v1", consentMaxAgeDays = 365, texts: textsOverride, onChange}) {
+export function ConsentProvider({children, language = "sk", categories, storageKey = "cookie-consent-v1", consentMaxAgeDays = 365, texts: textsOverride, onChange}) {
     const textsBase = getDefaultTexts(language)
     const texts = {...textsBase, ...(textsOverride || {})}
 
@@ -42,8 +44,6 @@ export function ConsentProvider({children, language = "en", categories, storageK
 
 export function useConsentContext() {
     const ctx = useContext(ConsentContext)
-    if (!ctx) {
-        throw new Error("useConsentContext must be used within <ConsentProvider>")
-    }
+    if (!ctx) throw new Error("useConsentContext must be used within <ConsentProvider>")
     return ctx
 }

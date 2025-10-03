@@ -1,3 +1,5 @@
+"use client"
+
 import classes from "@/styles/Toggle.module.css";
 
 
@@ -10,7 +12,7 @@ export default function Toggle({checked, disabled, onChange, label, description,
     return (
         <div className={classes.toggleRow} aria-disabled={disabled}>
             <div className={classes.meta}>
-                <div className={classes.label}>{label}</div>
+                <div className={classes.label} id={id + "-label"}>{label}</div>
                 {description && <div className={classes.description}>{description}</div>}
             </div>
             <label className={classes.switch}>

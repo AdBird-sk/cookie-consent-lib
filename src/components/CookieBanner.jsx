@@ -1,6 +1,9 @@
+"use client"
+
 import classes from "@/styles/CookieBanner.module.css";
 import cookieIcon from "@/assets/cookie.png";
 import CookieModal from "@/components/CookieModal";
+import {useMemo} from "react";
 import {useConsentContext} from "@/context/ConsentContext";
 
 
@@ -8,7 +11,7 @@ export default function CookieBanner({requireAction = false, className, style, t
     const {texts: baseTexts, hasChoice, isModalOpen, setIsModalOpen, setAll} = useConsentContext()
 
     const texts = {...baseTexts, ...(textsOverride || {})}
-    const visible = hasChoice === false
+    const visible = useMemo(() => !hasChoice, [hasChoice])
 
     function handleAcceptAll() {
         setAll(true)
@@ -58,7 +61,7 @@ export default function CookieBanner({requireAction = false, className, style, t
 
             {isModalOpen &&
                 <CookieModal
-                    isOpen={isModalOpen}
+                    isOpen
                     texts={texts}
                     onClose={() => {
                     }}

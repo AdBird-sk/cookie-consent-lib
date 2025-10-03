@@ -1,9 +1,12 @@
+"use client"
+
 import classes from "@/styles/CookieModal.module.css";
 import Toggle from "@/components/Toggle";
 import {createPortal} from "react-dom";
 import {useConsentContext} from "@/context/ConsentContext";
 import {useEffect, useRef, useState} from "react";
 
+const IS_BROWSER = typeof window !== "undefined" && typeof document !== "undefined"
 
 export default function CookieModal({isOpen, texts, onClose, requireAction = false}) {
     const {categories, consent, setMany, save, setIsModalOpen} = useConsentContext()
@@ -12,15 +15,13 @@ export default function CookieModal({isOpen, texts, onClose, requireAction = fal
     const modalRef = useRef(null)
 
     useEffect(function mount() {
-        if (!isOpen) return
+        if (!isOpen || !IS_BROWSER) return
         setMounted(true)
         const prev = document.body.style.overflow
         document.body.style.overflow = "hidden"
 
         function onKey(e) {
-            if (e.key === "Escape" && !requireAction) {
-                handleClose()
-            }
+            if (e.key === "Escape" && !requireAction) handleClose()
         }
 
         window.addEventListener("keydown", onKey)
@@ -32,7 +33,7 @@ export default function CookieModal({isOpen, texts, onClose, requireAction = fal
         }
     }, [isOpen, requireAction])
 
-    if (!isOpen) return null
+    if (!isOpen || !IS_BROWSER) return null
 
     function handleBackdrop(e) {
         if (requireAction) return

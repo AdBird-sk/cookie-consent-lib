@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react"
+import {useEffect, useMemo, useState} from "react"
 
 function readLS(key) {
     if (typeof window === "undefined") return null
@@ -25,36 +25,29 @@ function writeLS(key, value) {
 export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}) {
     const msPerDay = 24 * 60 * 60 * 1000
 
-    const [consent, setConsent] = useState({})
-    const [hasChoice, setHasChoice] = useState(undefined)
-    const [isExpired, setIsExpired] = useState(false)
-
-    useEffect(() => {
+    const initial = useMemo(() => {
         const stored = readLS(storageKey)
-        if (stored && stored.choices && stored.expiresAt > Date.now()) {
-            setConsent(stored.choices)
-            setHasChoice(true)
-            setIsExpired(false)
-        } else {
-            const defaults = {}
-            categories.forEach(c => {
-                defaults[c.id] = !!c.defaultEnabled || !!c.required
-            })
-            setConsent(defaults)
-            setHasChoice(false)
-            setIsExpired(false)
+        if (stored && stored.choices && stored.expiresAt && stored.expiresAt > Date.now()) {
+            return {consent: stored.choices, hasChoice: true, isExpired: false}
         }
+        const defaults = {}
+        categories.forEach(c => {
+            defaults[c.id] = !!c.defaultEnabled || !!c.required
+        })
+        return {consent: defaults, hasChoice: false, isExpired: false}
     }, [storageKey, categories])
 
+    const [consent, setConsent] = useState(initial.consent)
+    const [hasChoice, setHasChoice] = useState(initial.hasChoice)
+    const [isExpired, setIsExpired] = useState(initial.isExpired)
+
     useEffect(() => {
-        if (hasChoice !== true) return
+        if (!hasChoice) return
         const expiresAt = Date.now() + consentMaxAgeDays * msPerDay
         const payload = {choices: consent, timestamp: Date.now(), version: 1, expiresAt}
         writeLS(storageKey, payload)
-        if (typeof onChange === "function") {
-            onChange(payload)
-        }
-    }, [consent, hasChoice, consentMaxAgeDays, storageKey])
+        if (onChange) onChange(payload)
+    }, [consent, hasChoice, consentMaxAgeDays, storageKey, onChange])
 
     function setAll(enabled) {
         const next = {}
