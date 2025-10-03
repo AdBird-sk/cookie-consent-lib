@@ -1,17 +1,18 @@
-import CookieBanner from "@/components/CookieBanner.jsx";
-import CookieSettingsButton from "@/components/CookieSettingsButton.jsx";
-import {ConsentProvider} from "@/context/ConsentContext.jsx";
+import CookieBanner from "@/components/CookieBanner";
+import CookieSettingsButton from "@/components/CookieSettingsButton";
+import {ConsentProvider} from "@/context/ConsentContext";
 
 
-export default function CookieConsent({children, language = "sk", categories, texts, storageKey, consentMaxAgeDays, requireAction = false, showSettingsButton = false, settingsButtonClass, onConsent}) {
+export default function CookieConsent({children, language, categories, texts, storageKey, consentMaxAgeDays, requireAction = false, showSettingsButton = false, settingsButtonClass, onConsent, primaryColor}) {
     return (
         <ConsentProvider
-            language={language}
-            categories={categories}
             texts={texts}
-            storageKey={storageKey}
-            consentMaxAgeDays={consentMaxAgeDays}
+            language={language}
             onChange={onConsent}
+            categories={categories}
+            storageKey={storageKey}
+            primaryColor={primaryColor}
+            consentMaxAgeDays={consentMaxAgeDays}
         >
             <CookieBanner requireAction={requireAction}/>
 

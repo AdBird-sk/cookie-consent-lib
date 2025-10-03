@@ -13,6 +13,7 @@ function App() {
                     console.log("Analytics loaded 🚀")
                 }
             }}
+            primaryColor="red"
             // settingsButtonClass={}
             // storageKey={}
             // showSettingsButton={}

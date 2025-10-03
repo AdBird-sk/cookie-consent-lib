@@ -1,4 +1,4 @@
-import {useConsentContext} from "@/context/ConsentContext.jsx";
+import {useConsentContext} from "@/context/ConsentContext";
 
 
 export default function ConsentGate({category, fallback, children}) {

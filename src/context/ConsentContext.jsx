@@ -7,7 +7,7 @@ import {createContext, useContext, useMemo, useState, useEffect} from "react";
 
 const ConsentContext = createContext(null)
 
-export function ConsentProvider({children, language = "sk", categories, storageKey = "cookie-consent-v1", consentMaxAgeDays = 365, texts: textsOverride, onChange}) {
+export function ConsentProvider({children, language = "sk", categories, storageKey = "cookie-consent-v1", consentMaxAgeDays = 365, texts: textsOverride, onChange, primaryColor = "#1f7ae0"}) {
     const textsBase = getDefaultTexts(language)
     const texts = {...textsBase, ...(textsOverride || {})}
 
@@ -47,7 +47,8 @@ export function ConsentProvider({children, language = "sk", categories, storageK
         isExpired,
         setHasChoice,
         isModalOpen,
-        setIsModalOpen
+        setIsModalOpen,
+        primaryColor
     }
 
     return (

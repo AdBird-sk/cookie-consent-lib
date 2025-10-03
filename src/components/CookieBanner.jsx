@@ -8,7 +8,7 @@ import {useEffect, useMemo, useState} from "react";
 
 
 export default function CookieBanner({requireAction = false, className, style, texts: textsOverride}) {
-    const {texts: baseTexts, hasChoice, isModalOpen, setIsModalOpen, setAll} = useConsentContext()
+    const {texts: baseTexts, hasChoice, isModalOpen, setIsModalOpen, setAll, primaryColor} = useConsentContext()
 
     const texts = {...baseTexts, ...(textsOverride || {})}
 
@@ -55,7 +55,7 @@ export default function CookieBanner({requireAction = false, className, style, t
                             <button className={classes.customize} onClick={openCustomize}>
                                 {texts.customize}
                             </button>
-                            <button className={classes.accept} onClick={handleAcceptAll}>
+                            <button className={classes.accept} onClick={handleAcceptAll} style={{background: primaryColor}}>
                                 {texts.acceptAll}
                             </button>
                         </div>

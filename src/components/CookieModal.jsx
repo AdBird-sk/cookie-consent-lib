@@ -2,14 +2,14 @@
 
 import classes from "@/styles/CookieModal.module.css";
 import Toggle from "@/components/Toggle";
+import {IS_BROWSER} from "@/helpers/isBrowser.js";
 import {createPortal} from "react-dom";
 import {useConsentContext} from "@/context/ConsentContext";
 import {useEffect, useRef, useState} from "react";
 
-const IS_BROWSER = typeof window !== "undefined" && typeof document !== "undefined"
 
 export default function CookieModal({isOpen, texts, onClose, requireAction = false}) {
-    const {categories, consent, setMany, save, setIsModalOpen} = useConsentContext()
+    const {categories, consent, setMany, save, setIsModalOpen, primaryColor} = useConsentContext()
 
     const [mounted, setMounted] = useState(false)
     const modalRef = useRef(null)
@@ -73,7 +73,7 @@ export default function CookieModal({isOpen, texts, onClose, requireAction = fal
                 </div>
 
                 <div className={classes.footer}>
-                    <button className={classes.save} onClick={handleSave}>{texts.save}</button>
+                    <button className={classes.save} onClick={handleSave} style={{background: primaryColor}}>{texts.save}</button>
                 </div>
             </div>
         </div>,
