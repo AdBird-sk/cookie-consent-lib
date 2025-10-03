@@ -1,5 +1,4 @@
-import {useEffect, useState} from "react";
-
+import {useEffect, useState} from "react"
 
 function readLS(key) {
     if (typeof window === "undefined") return null
@@ -52,7 +51,10 @@ export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}
         const expiresAt = Date.now() + consentMaxAgeDays * msPerDay
         const payload = {choices: consent, timestamp: Date.now(), version: 1, expiresAt}
         writeLS(storageKey, payload)
-        if (onChange) onChange(payload)
+
+        if (typeof onChange === "function") {
+            onChange(payload)
+        }
     }, [consent, hasChoice, consentMaxAgeDays, storageKey])
 
     function setAll(enabled) {
