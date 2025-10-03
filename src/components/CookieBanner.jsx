@@ -12,6 +12,7 @@ export default function CookieBanner({requireAction = false, className, style, t
 
     const texts = {...baseTexts, ...(textsOverride || {})}
     const visible = useMemo(() => !hasChoice, [hasChoice])
+    console.log("[CookieBanner] render → hasChoice:", hasChoice, "visible:", visible)
 
     function handleAcceptAll() {
         setAll(true)

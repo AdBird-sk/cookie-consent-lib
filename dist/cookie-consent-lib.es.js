@@ -569,6 +569,7 @@ function yB({ isOpen: B, texts: D, onClose: C, requireAction: I = !1 }) {
 }
 function WB({ requireAction: B = !1, className: D, style: C, texts: I }) {
   const { texts: G, hasChoice: w, isModalOpen: h, setIsModalOpen: z, setAll: c } = l(), H = { ...G, ...I || {} }, e = W(() => !w, [w]);
+  console.log("[CookieBanner] render → hasChoice:", w, "visible:", e);
   function P() {
     c(!0);
   }
