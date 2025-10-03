@@ -1,7 +1,6 @@
 import classes from "@/styles/CookieBanner.module.css";
 import cookieIcon from "@/assets/cookie.png";
 import CookieModal from "@/components/CookieModal";
-import {useMemo} from "react";
 import {useConsentContext} from "@/context/ConsentContext";
 
 
@@ -9,7 +8,7 @@ export default function CookieBanner({requireAction = false, className, style, t
     const {texts: baseTexts, hasChoice, isModalOpen, setIsModalOpen, setAll} = useConsentContext()
 
     const texts = {...baseTexts, ...(textsOverride || {})}
-    const visible = useMemo(() => !hasChoice, [hasChoice])
+    const visible = hasChoice === false
 
     function handleAcceptAll() {
         setAll(true)

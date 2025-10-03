@@ -26,7 +26,7 @@ export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}
     const msPerDay = 24 * 60 * 60 * 1000
 
     const [consent, setConsent] = useState({})
-    const [hasChoice, setHasChoice] = useState(null)
+    const [hasChoice, setHasChoice] = useState(undefined)
     const [isExpired, setIsExpired] = useState(false)
 
     useEffect(() => {
@@ -51,7 +51,6 @@ export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}
         const expiresAt = Date.now() + consentMaxAgeDays * msPerDay
         const payload = {choices: consent, timestamp: Date.now(), version: 1, expiresAt}
         writeLS(storageKey, payload)
-
         if (typeof onChange === "function") {
             onChange(payload)
         }
