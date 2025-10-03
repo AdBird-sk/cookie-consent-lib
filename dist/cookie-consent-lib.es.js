@@ -366,7 +366,7 @@ function WA({ storageKey: B, categories: D, onChange: w, consentMaxAgeDays: H })
     if (O !== !0) return;
     const C = Date.now() + H * 864e5, E = { choices: M, timestamp: Date.now(), version: 1, expiresAt: C };
     AA(B, E), w && w(E);
-  }, [M, O, H, B, w]);
+  }, [M, O, H, B]);
   function x(C) {
     const E = {};
     D.forEach((j) => {

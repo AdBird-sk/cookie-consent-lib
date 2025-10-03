@@ -53,7 +53,7 @@ export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}
         const payload = {choices: consent, timestamp: Date.now(), version: 1, expiresAt}
         writeLS(storageKey, payload)
         if (onChange) onChange(payload)
-    }, [consent, hasChoice, consentMaxAgeDays, storageKey, onChange])
+    }, [consent, hasChoice, consentMaxAgeDays, storageKey])
 
     function setAll(enabled) {
         const next = {}
