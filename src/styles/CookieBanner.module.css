@@ -103,4 +103,8 @@
         justify-content: flex-end;
         flex-wrap: wrap;
     }
+
+    .logoWrap {
+        display: none;
+    }
 }

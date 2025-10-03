@@ -9,7 +9,7 @@ import {useEffect, useRef, useState} from "react";
 
 
 export default function CookieModal({isOpen, texts, onClose, requireAction = false}) {
-    const {categories, consent, setMany, save, setIsModalOpen, primaryColor} = useConsentContext()
+    const {categories, consent, setMany, save, setIsModalOpen, primaryColor, privacyLink} = useConsentContext()
 
     const [mounted, setMounted] = useState(false)
     const modalRef = useRef(null)
@@ -74,6 +74,12 @@ export default function CookieModal({isOpen, texts, onClose, requireAction = fal
 
                 <div className={classes.footer}>
                     <button className={classes.save} onClick={handleSave} style={{background: primaryColor}}>{texts.save}</button>
+
+                    {privacyLink && (
+                        <a href={privacyLink} target="_blank" rel="noopener noreferrer" className={classes.privacyLink}>
+                            Zásady ochrany osobných údajov
+                        </a>
+                    )}
                 </div>
             </div>
         </div>,

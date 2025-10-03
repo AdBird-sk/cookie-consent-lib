@@ -20,6 +20,7 @@ function App() {
             // texts={}
             // categories={}
             // consentMaxAgeDays={}
+            privacyLink={"https://www.google.com"}
         >
             <main>
                 <h1>Hello Cookie Consent Demo</h1>

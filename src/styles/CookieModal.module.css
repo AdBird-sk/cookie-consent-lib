@@ -69,8 +69,12 @@
 .footer {
     padding: 14px 20px 18px 20px;
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
     border-top: 1px solid #eee;
+
 }
 
 .save {
@@ -86,6 +90,17 @@
 .save:hover {
     background: #1664b8;
     transform: translateY(-1px);
+}
+
+.privacyLink {
+    color: #000;
+    margin-left: 16px;
+    font-size: 14px;
+    align-self: center;
+}
+
+.privacyLink:hover {
+
 }
 
 @media (max-width: 480px) {
