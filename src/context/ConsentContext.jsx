@@ -22,17 +22,26 @@ export function ConsentProvider({children, language = "sk", categories, storageK
     useEffect(() => {
         if (typeof window === "undefined") return
         const raw = localStorage.getItem(storageKey)
+        console.debug("ConsentProvider hydration check → raw LS:", raw)
         if (raw) {
             try {
                 const parsed = JSON.parse(raw)
+                console.debug("Parsed LS:", parsed)
                 if (parsed?.choices && parsed?.expiresAt > Date.now()) {
+                    console.debug("Valid consent found → setting hasChoice true")
                     setHasChoice(true)
+                } else {
+                    console.debug("Consent expired or invalid → keeping hasChoice false")
                 }
             } catch (e) {
                 console.warn("CookieConsent: failed to parse LS", e)
             }
         }
     }, [storageKey, setHasChoice])
+
+    useEffect(() => {
+        console.debug("ConsentProvider state → hasChoice:", hasChoice, "consent:", consent)
+    }, [hasChoice, consent])
 
     const value = {
         texts,
