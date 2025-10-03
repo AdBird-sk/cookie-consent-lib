@@ -26,28 +26,29 @@ function writeLS(key, value) {
 export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}) {
     const msPerDay = 24 * 60 * 60 * 1000
 
-    function getInitial() {
-        const stored = readLS(storageKey)
-        if (stored && stored.choices && stored.expiresAt && stored.expiresAt > Date.now()) {
-            return {
-                consent: stored.choices,
-                hasChoice: true,
-                isExpired: false
-            }
-        }
-        const defaults = {}
-        categories.forEach(c => {
-            defaults[c.id] = !!c.defaultEnabled || !!c.required
-        })
-        return {consent: defaults, hasChoice: false, isExpired: false}
-    }
-
-    const [consent, setConsent] = useState(() => getInitial().consent)
-    const [hasChoice, setHasChoice] = useState(() => getInitial().hasChoice)
-    const [isExpired, setIsExpired] = useState(() => getInitial().isExpired)
+    const [consent, setConsent] = useState({})
+    const [hasChoice, setHasChoice] = useState(null)
+    const [isExpired, setIsExpired] = useState(false)
 
     useEffect(() => {
-        if (!hasChoice) return
+        const stored = readLS(storageKey)
+        if (stored && stored.choices && stored.expiresAt > Date.now()) {
+            setConsent(stored.choices)
+            setHasChoice(true)
+            setIsExpired(false)
+        } else {
+            const defaults = {}
+            categories.forEach(c => {
+                defaults[c.id] = !!c.defaultEnabled || !!c.required
+            })
+            setConsent(defaults)
+            setHasChoice(false)
+            setIsExpired(false)
+        }
+    }, [storageKey, categories])
+
+    useEffect(() => {
+        if (hasChoice !== true) return
         const expiresAt = Date.now() + consentMaxAgeDays * msPerDay
         const payload = {choices: consent, timestamp: Date.now(), version: 1, expiresAt}
         writeLS(storageKey, payload)
@@ -84,12 +85,8 @@ export function useConsent({storageKey, categories, onChange, consentMaxAgeDays}
     }
 
     function save() {
-        const expiresAt = Date.now() + consentMaxAgeDays * msPerDay
-        const payload = {choices: consent, timestamp: Date.now(), version: 1, expiresAt}
-        writeLS(storageKey, payload)
         setHasChoice(true)
         setIsExpired(false)
-        if (onChange) onChange(payload)
     }
 
     function reset() {
